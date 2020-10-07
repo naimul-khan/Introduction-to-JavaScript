@@ -18,7 +18,13 @@ Do the following:
    HINT: no function required
 */
 
+const votingAge = 24; 
 
+if (votingAge >= 18) { 
+  console.log("True"); 
+} else { 
+  console.log("False");
+}
 
 /*
 Task 1b - Values
@@ -31,7 +37,14 @@ Do the following:
    HINT: no function required
 */
 
+const waterTemp = 98; 
+const boilingPoint = 212; 
 
+if (waterTemp > boilingPoint) { 
+  console.log("The water is boiling.")
+} else { 
+  console.log("The water is not boiling.")
+}
 
 
 
@@ -46,7 +59,25 @@ Do the following:
    HINT: look up the Number method
 */
 
+let year = "1999"; 
 
+// string to int conversion function
+
+function convertFromString(stringNum) { 
+
+  // converts parameter to int
+  var nowInt = parseInt(stringNum); 
+
+  // console check
+  if(Number.isInteger(nowInt)) { 
+    console.log("The number is an int. The number is " + nowInt + "."); 
+  } else { 
+    console.log("The number is not an int");
+  }
+
+  return nowInt; 
+
+}
 
 
 /*
@@ -58,9 +89,16 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
+function multiply(a, b){
     /*add your code here*/
+    var multAns = a * b; 
+
+    console.log("The answer is " + multAns + ".");
+
+    return multAns;
   }
+
+multiply(2,5); 
 
 
 
@@ -74,9 +112,17 @@ Do the following:
    3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
+function dogYears(age){
     /*add your code here*/
+    let dogAge = age * 7; 
+
+    console.log("The age entered was " + age + "."
+           + " This age in dog years is: " + dogAge + " years."); 
+
+    return dogAge; 
 }
+
+dogYears(12); 
 
 
 
@@ -107,9 +153,39 @@ Use the hungryDog function and feeding requirements below to do the following:
   NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
+function hungryDog(weight, age){
     /*add your code here*/
+    var floatWeight = Number.parseFloat(weight);
+    var floatAge = Number.parseFloat(age);
+    let feed = 0.0;     
+
+    if(floatAge >= 1) { 
+       if(floatWeight > 15) { 
+          feed = floatWeight * .02; 
+       } else if (floatWeight >= 11 && floatWeight <= 15){
+          feed = floatWeight * .03;
+       } else if (floatWeight >= 6 && floatWeight < 11) {
+         feed = floatWeight * .04; 
+       } else if (floatWeight >= 5) { 
+         feed = floatWeight * .05; 
+       } else { 
+         console.log("Something went wrong!"); 
+       }
+    } else if(floatAge >= 7/12  && floatAge < 12/12) { 
+        feed = floatWeight * .04;  
+    } else if(floatAge >= 4/12  && floatAge < 7/12) { 
+        feed = floatWeight * .05;  
+    } else if(floatAge >= 2/12  && floatAge < 4/12) { 
+        feed = floatWeight * .1;  
+    } else { 
+        console.log("The age is too young"); 
+    }
+
+    return feed;
+
   }
+
+hungryDog(15, 1);
 
 
 
@@ -127,8 +203,59 @@ Use the game function below to do the following:
   HINT: While you can complete this with only conditionals based on strings, it may help to equate choice to a number when using Math.random()
 */
 
-function game(/*add your code here*/){
-    /*add your code here*/
+// computer generator
+let compChoice = Math.random(); 
+    if (compChoice >= 0 && compChoice < 1/3){ 
+      compChoice = "ROCK"; 
+    } else if (compChoice >= 1/3 && compChoice < 2/3){ 
+      compChoice = "SCISSORS"; 
+    }if (compChoice >= 2/3 && compChoice <= 3/3){ 
+      compChoice = "PAPER"; 
+    }
+
+
+function game(weapon, weapon2){
+   
+    // // format user input
+    let userInput = weapon;
+    var userChoice = userInput.toString().toUpperCase(); 
+
+    let computerInput = weapon2; 
+    var computerChoice = computerInput.toString().toUpperCase(); 
+
+    // code for game
+    if(userChoice == "ROCK" && computerChoice == "ROCK"){ 
+        console.log("You chose " + userChoice + ". We chose " + computerChoice + ". We TIED");
+        return "it's a tie"; 
+    } else if(userChoice == "ROCK" && computerChoice == "PAPER"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". You LOST");
+      return "you lose!";
+    } else if(userChoice == "ROCK" && computerChoice == "SCISSORS"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". You WON");
+      return "you win!"; 
+    } else if(userChoice == "PAPER" && computerChoice == "PAPER"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". We TIED");
+      return "it's a tie"; 
+    } if(userChoice == "PAPER" && computerChoice == "SCISSORS"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". You LOST");
+      return "you lose!"; 
+    } else if(userChoice == "PAPER" && computerChoice == "ROCK"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". You WON");
+      return "you win!"; 
+    } else if(userChoice == "SCISSORS" && computerChoice == "SCISSORS"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". We TIED");
+      return "it's a tie"; 
+    } if(userChoice == "SCISSORS" && computerChoice == "ROCK"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". You LOST");
+      return "you lose!"; 
+    } else if(userChoice == "SCISSORS" && computerChoice == "PAPER"){ 
+      console.log("You chose " + userChoice + ". We chose " + computerChoice + ". You WON");
+      return "you win!"; 
+    } else { 
+        console.log("Something went wrong :("); 
+    }
+
+
 }
   
   
@@ -144,8 +271,9 @@ Using the miles function below do the following:
   3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-    /*add your code here*/
+function miles(kmInput){
+      var miles = kmInput * .621371; 
+      return miles;
   }
 
 
@@ -158,8 +286,10 @@ Using the feet function below do the following:
   3. Return number of feet
 */
 
-function feet(/*add your code here*/){
+function feet(cmInput){
     /*add your code here*/
+    var feet = cmInput / 30.48; 
+    return feet;
   }
  
 
@@ -174,8 +304,19 @@ Using the annoyingSong function below do the following:
       "(number) bottles of soda on the wall, (number) bottles of soda, take one down pass it around (number left over) bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
+function annoyingSong(startNum){
         /*add your code here*/
+
+        let countDown = startNum;
+
+        while (countDown > 0) { 
+            let remaining = countDown- 1;
+            return countDown + " bottles of soda on the wall, " + countDown + 
+            " bottles of soda, take one down pass it around " +
+            remaining +  " bottles of soda on the wall"; 
+
+            countDown--;
+        }
   }
 
 
@@ -194,8 +335,22 @@ Using the grade function below do the following:
    below 60 = F
 */
   
-function grade(/*add your code here*/){
+function grade(numGrade){
     /*add your code here*/
+
+    if (numGrade >= 90)  {
+      return "you got an A"; 
+    } else if (numGrade >=80 && numGrade < 90) {
+      return "you got a B";
+    } else if (numGrade >=70 && numGrade < 80) {
+      return "you got a C";
+    } else if (numGrade >=60 && numGrade < 70) {
+      return "you got a D";
+    } else if (numGrade < 60) {
+      return "you got an F";
+    } else { 
+      console.log("Oops, something went wrong :("); 
+    }
   }
   
   
@@ -215,9 +370,41 @@ Using the vowelCounter function below do the following:
 */
 
 
-function vowelCounter(/*add your code here*/) {
+function vowelCounter(inputString) {
     /*add your code here*/
+    console.log(inputString); 
+    
+    const adjustedStr = inputString.toUpperCase(); 
+    console.log(adjustedStr); 
+    
+    const strLength = adjustedStr.length; 
+    console.log(strLength); 
+    
+    const charArray = adjustedStr.split("");
+    console.log(charArray); 
+    
+    let vowels = 0;
+    
+    for(i=0; i < strLength; i++) { 
+      console.log(charArray[i] + " " + vowels);
+      if(charArray[i] == "A" || charArray[i] == "E" || 
+      charArray[i] == "I" || charArray[i] == "O" || 
+      charArray[i] == "U")
+      { 
+          vowels++; 
+      }
+      else 
+      { 
+      console.log("NOT A VOWEL"); 
+      }
+      console.log(vowels);
+    }
+    
+    return vowels; 
+    
 }
+   
+
 
 
 
