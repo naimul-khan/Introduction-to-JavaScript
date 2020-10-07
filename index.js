@@ -385,7 +385,7 @@ function vowelCounter(inputString) {
     
     let vowels = 0;
     
-    for(i=0; i < strLength; i++) { 
+    for(let i=0; i < strLength; i++) { 
       console.log(charArray[i] + " " + vowels);
       if(charArray[i] == "A" || charArray[i] == "E" || 
       charArray[i] == "I" || charArray[i] == "O" || 
